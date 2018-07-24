@@ -1,43 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
-    <packaging>jar</packaging>
     <name>Rally Rest Toolkit For Java</name>
     <groupId>com.rallydev.rest</groupId>
+    <packaging>jar</packaging>
     <artifactId>rally-rest-api</artifactId>
     <version>2.2.2-SNAPSHOT</version>
 
+    
     <description>A java toolkit for interacting with the Rally Rest API</description>
 
     <url>https://github.com/RallyTools/RallyRestToolkitForJava</url>
     <licenses>
-        <license>
-            <name>The MIT License (MIT)</name>
-            <url>http://opensource.org/licenses/MIT</url>
-            <distribution>repo</distribution>
-        </license>
+      <license>
+          <name>The MIT License (MIT)</name>
+          <url>http://opensource.org/licenses/MIT</url>
+          <distribution>repo</distribution>
+      </license>
     </licenses>
 
     <developers>
-        <developer>
-            <id>krmorse</id>
-            <name>Kyle Morse</name>
-        </developer>
+      <developer>
+          <id>krmorse</id>
+          <name>Kyle Morse</name>
+      </developer>
+      <developer>
+          <id>wconnor</id>
+          <name>Willy Connor</name>
+      </developer>
+      <developer>
+          <id>alamaherach</id>
+          <name>Adil Lamaherach</name>
+      </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:RallyTools/RallyRestToolkitForJava.git</connection>
-        <developerConnection>scm:git:git@github.com:RallyTools/RallyRestToolkitForJava.git</developerConnection>
-        <url>git@github.com:RallyTools/RallyRestToolkitForJava.git</url>
+        <connection>scm:git:git@github.com:sdwilly22/RallyToolsForJava.git</connection>
+        <developerConnection>scm:git:git@github.com:sdwilly22/RallyToolsForJava.git</developerConnection>
+        <url>git@github.com:sdwilly22/RallyToolsForJava.git</url>
     </scm>
-    <build>
-        <plugins>
-            <plugin>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.mycompany.app.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+          </execution>
+        </executions>
+      </plugin>
+                  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <executions>
@@ -85,11 +119,22 @@
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
 
-    <dependencies>
-        <dependency>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.11.330</version>
+    </dependency>
+            <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.2.5</version>
@@ -112,6 +157,5 @@
             <scope>test</scope>
         </dependency>
 
-    </dependencies>
-
+  </dependencies>
 </project>
